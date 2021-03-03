@@ -1,6 +1,62 @@
-type ExampleEntity @entity {
+
+
+type RulerTransfer @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  spender: Bytes! # address
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+}
+
+type RulerOwnershipTransferred @entity {
+  id: ID!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+}
+
+type RulerSwap @entity {
+  id: ID!
+  sender: Bytes!
+  amount0In: BigInt!
+  amount1In: BigInt!
+  amount0Out: BigInt!
+  amount1Out: BigInt!
+  to: Bytes!
+}
+
+type RulerMint @entity {
+  id: ID!
+  sender: Bytes!
+  amount0: BigInt!
+  amount1: BigInt!
+}
+
+type RulerBurn @entity {
+  id: ID!
+  amount0: BigInt!
+  amount1: BigInt!
+}
+
+type RulerSync @entity {
+  id: ID!
+  reserve0: BigInt!
+  reserve1: BigInt!
+}
+
+type RulerDeposit @entity {
+  id: ID!
+  lpToken: Bytes!
+  amount: BigInt!
+}
+
+type RulerWithdraw @entity {
+  id: ID!
+  _lpToken: Bytes!
+  _amount: BigInt!
+}
+
+type RulerPausedStatusUpdated @entity {
+  id: ID!
+  _new: Boolean!
+  old: Boolean!
+  user: Bytes!
 }

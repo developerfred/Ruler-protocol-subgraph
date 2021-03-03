@@ -1,21 +1,10 @@
 import { BigInt } from "@graphprotocol/graph-ts"
 import {
-  RulerToken,
-  Approval,
-  OwnershipTransferred,
   Transfer
 } from "../generated/RulerToken/RulerToken"
 import { Swap, Mint, Burn, Sync } from '../generated/RulerSushiLP/RulerSushiLP'
-import { Deposit, Withdraw, PausedStatusUpdated } from '../generated/RulerMining/RulerMining'
-import { RulerTransfer, RulerOwnershipTransferred, RulerSwap, RulerMint, RulerBurn, RulerSync, RulerDeposit, RulerWithdraw, RulerPausedStatusUpdated } from "../generated/schema"
-
-export function handleOwnershipTransferred(event: OwnershipTransferred): void {
-  let OwnershipTransfer = new RulerOwnershipTransferred(event.transaction.from.toHex())
-
-  OwnershipTransfer.previousOwner = event.params.previousOwner;
-  OwnershipTransfer.previousOwner = event.params.newOwner;
-  OwnershipTransfer.save()
-}
+import { Deposit, Withdraw } from '../generated/RulerMining/RulerMining'
+import { RulerTransfer,  RulerSwap, RulerMint, RulerBurn, RulerSync, RulerDeposit, RulerWithdraw, RulerPausedStatusUpdated } from "../generated/schema"
 
 export function handleTransfer(event: Transfer): void {
   
